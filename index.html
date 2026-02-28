@@ -3,237 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bi-service | لخدماتك الرقمية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>Bi-service | متجر الاشتراكات والحلول الرقمية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #22c55e; /* لون واتساب */
-            --dark: #1e293b;
-            --light: #f8fafc;
+            --primary: #6366f1;
+            --secondary: #06b6d4;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
-
         body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
         }
-
-        /* تنسيق الهيدر والشعار */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--dark);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
-
-        /* قسم البداية (Hero) */
-        .hero {
-            text-align: center;
-            padding: 5rem 5%;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #cbd5e1;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* تنسيق الخدمات */
-        .services-section {
-            padding: 4rem 5%;
-            text-align: center;
-        }
-
-        .services-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e2e8f0;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .card p, .card ul {
-            text-align: right;
-            color: #475569;
-            margin-bottom: 1.5rem;
-            list-style-position: inside;
-        }
-
-        .card ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .card ul li {
-            padding: 5px 0;
-            border-bottom: 1px dashed #cbd5e1;
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
         
-        .card ul li:last-child {
-            border-bottom: none;
+        .logo-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* زر واتساب */
-        .whatsapp-btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: background 0.3s;
-            width: 100%;
-            text-align: center;
+        .hero-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#6366f115 1px, transparent 1px);
+            background-size: 20px 20px;
         }
 
-        .whatsapp-btn:hover {
-            background-color: #16a34a;
+        .btn-grad {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-grad:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
         }
 
-        /* الفوتر */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        /* للموبايل */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+        .service-badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900">
 
-    <header>
-        <a href="#" class="logo">
-            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100" height="100" rx="20" fill="#2563eb"/>
-                <path d="M30 70V30L50 50L70 30V70" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Bi-<span>service</span>
-        </a>
-        <a href="#services" class="whatsapp-btn" style="width: auto; padding: 8px 15px;">اطلب خدمتك الآن</a>
-    </header>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-3 group cursor-pointer">
+                    <div class="relative w-12 h-12 flex items-center justify-center bg-slate-900 rounded-xl overflow-hidden group-hover:rotate-6 transition-transform duration-300">
+                        <svg viewBox="0 0 100 100" class="w-8 h-8 fill-none stroke-white stroke-[8]" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M30 20 L30 80 Q60 80 60 50 Q60 20 30 20 Z" />
+                            <circle cx="70" cy="50" r="10" class="fill-cyan-400 stroke-none" />
+                        </svg>
+                    </div>
+                    <div class="flex flex-col leading-none">
+                        <span class="text-2xl font-bold font-poppins logo-gradient tracking-tight">Bi-service</span>
+                        <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Solutions Hub</span>
+                    </div>
+                </div>
 
-    <section class="hero">
-        <h1>حلولك الرقمية المتكاملة في مكان واحد</h1>
-        <p>مرحباً بك في Bi-service! نقدم لك أفضل الاشتراكات الرقمية، وتصميم مواقع الويب وصفحات الهبوط الاحترافية، بالإضافة إلى بناء هوية بصرية تميز علامتك التجارية.</p>
-    </section>
+                <div class="hidden md:flex items-center gap-10 font-semibold text-slate-600">
+                    <a href="#hero" class="hover:text-indigo-600 transition">الرئيسية</a>
+                    <a href="#services" class="hover:text-indigo-600 transition">خدماتنا</a>
+                    <a href="#pricing" class="hover:text-indigo-600 transition">الاشتراكات</a>
+                    <a href="#contact" class="btn-grad text-white px-6 py-2.5 rounded-xl shadow-sm transition-all">تواصل معنا</a>
+                </div>
 
-    <section id="services" class="services-section">
-        <h2>خدماتنا المميزة</h2>
-        <div class="grid">
-
-            <div class="card">
-                <h3>الاشتراكات الرقمية 👑</h3>
-                <ul>
-                    <li>✅ حسابات Canva Pro</li>
-                    <li>✅ اشتراكات ChatGPT Plus</li>
-                    <li>✅ حسابات Netflix</li>
-                    <li>✅ اشتراك Gemini Pro</li>
-                    <li>✅ Telegram Premium</li>
-                    <li>✅ YouTube Premium</li>
-                </ul>
-                <a href="https://wa.me/212698984642?text=مرحباً، أريد الاستفسار عن خدمة الاشتراكات الرقمية (Canva, Netflix...)" target="_blank" class="whatsapp-btn">اطلب عبر واتساب</a>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 text-slate-900"><i data-lucide="menu"></i></button>
+                </div>
             </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-slate-200 p-6 space-y-4 shadow-xl text-right">
+            <a href="#hero" class="block text-lg font-bold">الرئيسية</a>
+            <a href="#services" class="block text-lg font-bold">خدماتنا</a>
+            <a href="#pricing" class="block text-lg font-bold">الاشتراكات</a>
+            <a href="#contact" class="block text-indigo-600 font-bold">تواصل معنا</a>
+        </div>
+    </nav>
 
-            <div class="card">
-                <h3>برمجة وتصميم المواقع 💻</h3>
-                <p>نصمم لك واجهة رقمية تعكس احترافية عملك وتزيد من مبيعاتك.</p>
-                <ul>
-                    <li>✅ صفحات هبوط للمطاعم والمقاهي</li>
-                    <li>✅ صفحات هبوط للمتاجر والأنشطة التجارية</li>
-                    <li>✅ تصميم مواقع تعريفية للشركات</li>
-                    <li>✅ استضافة وحجز نطاقات (Domains)</li>
-                </ul>
-                <a href="https://wa.me/212698984642?text=مرحباً، أريد طلب تصميم صفحة هبوط / موقع ويب" target="_blank" class="whatsapp-btn">اطلب عبر واتساب</a>
+    <!-- Hero Section -->
+    <section id="hero" class="pt-40 pb-24 px-4 hero-pattern relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-indigo-200 rounded-full blur-3xl opacity-20"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-cyan-200 rounded-full blur-3xl opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full text-sm font-bold mb-8 border border-indigo-100">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                متوفر الآن: اشتراكات VIP بأسعار منافسة
             </div>
-
-            <div class="card">
-                <h3>تصميم الشعارات والهوية 🎨</h3>
-                <p>اجعل علامتك التجارية لا تُنسى مع تصاميمنا الإبداعية.</p>
-                <ul>
-                    <li>✅ تصميم شعارات احترافية (Logos)</li>
-                    <li>✅ تصميم هوية بصرية كاملة</li>
-                    <li>✅ تصاميم السوشيال ميديا</li>
-                    <li>✅ كروت شخصية وبنرات إعلانية</li>
-                </ul>
-                <a href="https://wa.me/212698984642?text=مرحباً، مهتم بخدمة تصميم الشعارات والهوية البصرية" target="_blank" class="whatsapp-btn">اطلب عبر واتساب</a>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-[1.15]">
+                منصة <span class="logo-gradient font-poppins">Bi-service</span><br>
+                لكل ما يحتاجه عالمك الرقمي
+            </h1>
+            <p class="text-xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                نوفر لك أفضل اشتراكات المنصات العالمية وخدمات تطوير الأعمال في مكان واحد وبأمان تام.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#pricing" class="btn-grad text-white px-10 py-5 rounded-2xl text-lg font-bold flex items-center justify-center gap-2">
+                    تصفح الاشتراكات <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                </a>
+                <a href="#services" class="bg-white text-slate-800 border-2 border-slate-200 px-10 py-5 rounded-2xl text-lg font-bold hover:bg-slate-50 transition flex items-center justify-center">
+                    خدمات التطوير
+                </a>
             </div>
-
         </div>
     </section>
 
-    <footer>
-        <p>جميع الحقوق محفوظة © 2026 - Bi-service</p>
+    <!-- Services Section -->
+    <section id="services" class="py-32 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <span class="text-indigo-600 font-bold tracking-widest uppercase text-sm">مجالات عملنا</span>
+                <h2 class="text-4xl font-bold mt-2">نقدم حلولاً متكاملة للأفراد والشركات</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:border-indigo-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-white shadow-sm text-indigo-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shopping-bag" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">بيع الاشتراكات</h3>
+                    <p class="text-slate-600 leading-relaxed">اشتراكات رسمية ومضمونة لأشهر المنصات (ترفيه، تعليم، إنتاجية) بأسعار توفيرية.</p>
+                </div>
+                <div class="group p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:border-cyan-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-white shadow-sm text-cyan-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="code-2" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">التطوير البرمجي</h3>
+                    <p class="text-slate-600 leading-relaxed">برمجة مواقع وتطبيقات احترافية مخصصة لتلبية احتياجات مشروعك بدقة عالية.</p>
+                </div>
+                <div class="group p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:border-indigo-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-white shadow-sm text-indigo-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">ضمان وأمان</h3>
+                    <p class="text-slate-600 leading-relaxed">نضمن لك جميع الخدمات والاشتراكات مع دعم فني متواصل لضمان استمرارية عملك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-32 px-4 bg-slate-900 text-white relative overflow-hidden text-right">
+        <div class="absolute top-0 right-0 opacity-10"><i data-lucide="sparkles" class="w-96 h-96"></i></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold mb-6">العروض الحصرية واشتراكات VIP</h2>
+                <p class="text-slate-400">اختر الخدمة أو الباقة التي تناسبك واستمتع بالمميزات الكاملة</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Basic Tech Plan -->
+                <div class="bg-slate-800/50 backdrop-blur-sm p-10 rounded-[2.5rem] border border-slate-700 flex flex-col">
+                    <h4 class="text-indigo-400 font-bold mb-4 uppercase tracking-widest text-sm">خدمات الويب</h4>
+                    <div class="text-4xl font-bold mb-8">تبدأ من $49</div>
+                    <ul class="space-y-5 mb-12 flex-grow">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> موقع تعريفي احترافي</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> حجز دومين واستضافة</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> ايميلات رسمية</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl border-2 border-slate-700 hover:bg-slate-700 transition font-bold">اطلب الآن</button>
+                </div>
+                
+                <!-- NEW: Premium App Subscriptions Slot -->
+                <div class="bg-indigo-600 p-1 rounded-[2.5rem] transform lg:-translate-y-6 shadow-2xl">
+                    <div class="bg-indigo-600 p-10 rounded-[2.4rem] h-full flex flex-col">
+                        <div class="bg-indigo-500/50 text-white text-xs font-bold px-4 py-1.5 rounded-full inline-block mb-6 uppercase tracking-wider">الأكثر طلباً</div>
+                        <h4 class="text-white text-2xl font-bold mb-6">اشتراكات المنصات</h4>
+                        
+                        <div class="space-y-4 mb-10 flex-grow">
+                            <!-- Canva -->
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="palette" class="w-5 h-5"></i>
+                                    <span class="font-bold">Canva Pro</span>
+                                </div>
+                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">اشتراك سنوي</span>
+                            </div>
+                            <!-- ChatGPT -->
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="bot" class="w-5 h-5"></i>
+                                    <span class="font-bold">ChatGPT Plus</span>
+                                </div>
+                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">4.0 Turbo</span>
+                            </div>
+                            <!-- Netflix -->
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="tv" class="w-5 h-5"></i>
+                                    <span class="font-bold">Netflix 4K</span>
+                                </div>
+                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">باقة التوفير</span>
+                            </div>
+                            <!-- YouTube Premium -->
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                                    <span class="font-bold">YouTube Premium</span>
+                                </div>
+                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">بدون إعلانات</span>
+                            </div>
+                            <!-- Telegram -->
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="send" class="w-5 h-5"></i>
+                                    <span class="font-bold">Telegram Premium</span>
+                                </div>
+                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">كامل المميزات</span>
+                            </div>
+                        </div>
+
+                        <button class="w-full py-4 rounded-2xl bg-white text-indigo-600 font-bold hover:bg-slate-100 transition shadow-xl flex items-center justify-center gap-2">
+                            اطلب اشتراكك الآن <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Enterprise / Custom -->
+                <div class="bg-slate-800/50 backdrop-blur-sm p-10 rounded-[2.5rem] border border-slate-700 flex flex-col">
+                    <h4 class="text-cyan-400 font-bold mb-4 uppercase tracking-widest text-sm">المؤسسات والبرمجيات</h4>
+                    <div class="text-2xl font-bold mb-8 leading-tight">حلول برمجية مخصصة</div>
+                    <ul class="space-y-5 mb-12 flex-grow">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> تطبيقات iOS و Android</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> ربط بوابات الدفع</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> دعم فني مخصص للمؤسسات</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl border-2 border-slate-700 hover:bg-slate-700 transition font-bold">استشارة تقنية</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-32 px-4 bg-slate-50">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="text-right">
+                <h2 class="text-4xl font-bold mb-6">هل لديك استفسار عن اشتراك أو خدمة؟</h2>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+                    فريق <span class="font-poppins font-bold text-indigo-600">Bi-service</span> جاهز لخدمتكم وتوفير الطلبات الخاصة. تواصل معنا مباشرة عبر القنوات المتاحة.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 flex-row-reverse">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-indigo-600"><i data-lucide="mail"></i></div>
+                        <div class="text-right">
+                            <div class="text-sm text-slate-500">البريد الإلكتروني</div>
+                            <div class="font-bold">sales@bi-service.com</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 flex-row-reverse">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-cyan-600"><i data-lucide="phone"></i></div>
+                        <div class="text-right">
+                            <div class="text-sm text-slate-500">واتساب المبيعات</div>
+                            <div class="font-bold font-poppins text-left" dir="ltr">+212698984642</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-indigo-100 border border-slate-100">
+                <form class="space-y-6" onsubmit="event.preventDefault(); showSuccess();">
+                    <div class="text-right">
+                        <label class="block text-sm font-bold text-slate-700 mb-2">الاسم</label>
+                        <input type="text" placeholder="أدخل اسمك" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-600 outline-none text-right" required>
+                    </div>
+                    <div class="text-right">
+                        <label class="block text-sm font-bold text-slate-700 mb-2">نوع الطلب</label>
+                        <select class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-600 outline-none text-right text-slate-500">
+                            <option>شراء اشتراك (Netflix, YouTube...)</option>
+                            <option>طلب خدمة برمجة</option>
+                            <option>مشكلة فنية في اشتراك</option>
+                            <option>استفسار عام</option>
+                        </select>
+                    </div>
+                    <div class="text-right">
+                        <label class="block text-sm font-bold text-slate-700 mb-2">تفاصيل الطلب</label>
+                        <textarea rows="4" placeholder="اكتب هنا ما تحتاجه..." class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-600 outline-none text-right" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-5 btn-grad text-white font-bold rounded-2xl text-lg transition-all">إرسال الطلب</button>
+                    <div id="success-msg" class="hidden text-center text-green-600 font-bold animate-pulse mt-4">
+                        تم استلام طلبك! سيقوم فريق المبيعات بالرد عليك قريباً.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 pt-20 pb-10 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row-reverse justify-between items-center gap-8 mb-16">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" class="w-6 h-6 fill-none stroke-white stroke-[8]">
+                        <path d="M30 20 L30 80 Q60 80 60 50 Q60 20 30 20 Z" />
+                    </svg>
+                </div>
+                <span class="text-2xl font-bold font-poppins logo-gradient">Bi-service</span>
+            </div>
+            
+            <div class="flex gap-8 font-bold text-slate-500">
+                <a href="#" class="hover:text-indigo-600 transition">تويتر</a>
+                <a href="#" class="hover:text-indigo-600 transition">لينكد إن</a>
+                <a href="#" class="hover:text-indigo-600 transition">انستقرام</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-slate-100 pt-8 text-center text-slate-400 text-sm">
+            &copy; 2024 Bi-service Solutions. متجرك الرقمي الأول بكل أمان.
+        </div>
     </footer>
 
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form success logic
+        function showSuccess() {
+            const msg = document.getElementById('success-msg');
+            msg.classList.remove('hidden');
+            setTimeout(() => { msg.classList.add('hidden'); }, 6000);
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'py-1');
+            } else {
+                nav.classList.remove('shadow-lg', 'py-1');
+            }
+        });
+    </script>
 </body>
 </html>
