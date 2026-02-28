@@ -11,6 +11,7 @@
         :root {
             --primary: #6366f1;
             --secondary: #06b6d4;
+            --whatsapp: #25d366;
         }
         body {
             font-family: 'Cairo', sans-serif;
@@ -45,14 +46,49 @@
             box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
         }
 
-        .service-badge {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* WhatsApp Floating Button Animation */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--whatsapp);
+            opacity: 0.6;
+            z-index: -1;
+            animation: pulse-animation 2s infinite;
+        }
+        @keyframes pulse-animation {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.6); opacity: 0; }
         }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/212698984642?text=مرحباً%20Bi-service،%20أريد%20الاستفسار%20عن%20خدماتكم" target="_blank" class="whatsapp-float">
+        <div class="pulse"></div>
+        <i data-lucide="message-circle" class="w-8 h-8 fill-current"></i>
+    </a>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav border-b border-slate-200">
@@ -66,8 +102,8 @@
                         </svg>
                     </div>
                     <div class="flex flex-col leading-none">
-                        <span class="text-2xl font-bold font-poppins logo-gradient tracking-tight">Bi-service</span>
-                        <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Solutions Hub</span>
+                        <span class="text-2xl font-bold font-poppins logo-gradient tracking-tight text-right">Bi-service</span>
+                        <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold text-right">Solutions Hub</span>
                     </div>
                 </div>
 
@@ -75,7 +111,7 @@
                     <a href="#hero" class="hover:text-indigo-600 transition">الرئيسية</a>
                     <a href="#services" class="hover:text-indigo-600 transition">خدماتنا</a>
                     <a href="#pricing" class="hover:text-indigo-600 transition">الاشتراكات</a>
-                    <a href="#contact" class="btn-grad text-white px-6 py-2.5 rounded-xl shadow-sm transition-all">تواصل معنا</a>
+                    <a href="https://wa.me/212698984642" class="btn-grad text-white px-6 py-2.5 rounded-xl shadow-sm transition-all">واتساب المبيعات</a>
                 </div>
 
                 <div class="md:hidden">
@@ -88,15 +124,13 @@
             <a href="#hero" class="block text-lg font-bold">الرئيسية</a>
             <a href="#services" class="block text-lg font-bold">خدماتنا</a>
             <a href="#pricing" class="block text-lg font-bold">الاشتراكات</a>
-            <a href="#contact" class="block text-indigo-600 font-bold">تواصل معنا</a>
+            <a href="https://wa.me/212698984642" class="block text-indigo-600 font-bold">تواصل واتساب</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="pt-40 pb-24 px-4 hero-pattern relative overflow-hidden">
         <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-indigo-200 rounded-full blur-3xl opacity-20"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-cyan-200 rounded-full blur-3xl opacity-20"></div>
-
         <div class="max-w-7xl mx-auto text-center relative z-10">
             <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full text-sm font-bold mb-8 border border-indigo-100">
                 <span class="relative flex h-2 w-2">
@@ -107,206 +141,96 @@
             </div>
             <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-[1.15]">
                 منصة <span class="logo-gradient font-poppins">Bi-service</span><br>
-                لكل ما يحتاجه عالمك الرقمي
+                متجرك الرقمي الأول
             </h1>
             <p class="text-xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-                نوفر لك أفضل اشتراكات المنصات العالمية وخدمات تطوير الأعمال في مكان واحد وبأمان تام.
+                نوفر لك أفضل اشتراكات المنصات العالمية (Canva, Netflix, ChatGPT) وخدمات البرمجة في مكان واحد وبأمان تام.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-6">
                 <a href="#pricing" class="btn-grad text-white px-10 py-5 rounded-2xl text-lg font-bold flex items-center justify-center gap-2">
                     تصفح الاشتراكات <i data-lucide="shopping-cart" class="w-5 h-5"></i>
                 </a>
-                <a href="#services" class="bg-white text-slate-800 border-2 border-slate-200 px-10 py-5 rounded-2xl text-lg font-bold hover:bg-slate-50 transition flex items-center justify-center">
-                    خدمات التطوير
+                <a href="https://wa.me/212698984642?text=أريد%20طلب%20خدمة%20برمجة" class="bg-white text-slate-800 border-2 border-slate-200 px-10 py-5 rounded-2xl text-lg font-bold hover:bg-slate-50 transition flex items-center justify-center">
+                    اطلب خدمة برمجة
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-32 px-4 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <span class="text-indigo-600 font-bold tracking-widest uppercase text-sm">مجالات عملنا</span>
-                <h2 class="text-4xl font-bold mt-2">نقدم حلولاً متكاملة للأفراد والشركات</h2>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:border-indigo-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-white shadow-sm text-indigo-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <i data-lucide="shopping-bag" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">بيع الاشتراكات</h3>
-                    <p class="text-slate-600 leading-relaxed">اشتراكات رسمية ومضمونة لأشهر المنصات (ترفيه، تعليم، إنتاجية) بأسعار توفيرية.</p>
-                </div>
-                <div class="group p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:border-cyan-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-white shadow-sm text-cyan-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <i data-lucide="code-2" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">التطوير البرمجي</h3>
-                    <p class="text-slate-600 leading-relaxed">برمجة مواقع وتطبيقات احترافية مخصصة لتلبية احتياجات مشروعك بدقة عالية.</p>
-                </div>
-                <div class="group p-10 rounded-3xl bg-slate-50 border border-slate-100 hover:border-indigo-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-white shadow-sm text-indigo-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <i data-lucide="shield-check" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">ضمان وأمان</h3>
-                    <p class="text-slate-600 leading-relaxed">نضمن لك جميع الخدمات والاشتراكات مع دعم فني متواصل لضمان استمرارية عملك.</p>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
     <section id="pricing" class="py-32 px-4 bg-slate-900 text-white relative overflow-hidden text-right">
-        <div class="absolute top-0 right-0 opacity-10"><i data-lucide="sparkles" class="w-96 h-96"></i></div>
-        
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-6">العروض الحصرية واشتراكات VIP</h2>
-                <p class="text-slate-400">اختر الخدمة أو الباقة التي تناسبك واستمتع بالمميزات الكاملة</p>
+                <h2 class="text-4xl font-bold mb-6">الاشتراكات المتوفرة</h2>
+                <p class="text-slate-400">تواصل معنا عبر الواتساب لتفعيل اشتراكك فوراً</p>
             </div>
             
             <div class="grid lg:grid-cols-3 gap-8 items-stretch">
-                <!-- Basic Tech Plan -->
+                <!-- Web Services -->
                 <div class="bg-slate-800/50 backdrop-blur-sm p-10 rounded-[2.5rem] border border-slate-700 flex flex-col">
                     <h4 class="text-indigo-400 font-bold mb-4 uppercase tracking-widest text-sm">خدمات الويب</h4>
                     <div class="text-4xl font-bold mb-8">تبدأ من $49</div>
                     <ul class="space-y-5 mb-12 flex-grow">
                         <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> موقع تعريفي احترافي</li>
                         <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> حجز دومين واستضافة</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> ايميلات رسمية</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> دعم فني متميز</li>
                     </ul>
-                    <button class="w-full py-4 rounded-2xl border-2 border-slate-700 hover:bg-slate-700 transition font-bold">اطلب الآن</button>
+                    <a href="https://wa.me/212698984642?text=أريد%20الاستفسار%20عن%20خدمات%20الويب" class="w-full py-4 rounded-2xl border-2 border-slate-700 hover:bg-slate-700 transition font-bold text-center">اطلب الآن عبر واتساب</a>
                 </div>
                 
-                <!-- NEW: Premium App Subscriptions Slot -->
+                <!-- PLATFORM SUBSCRIPTIONS (The Main Slot) -->
                 <div class="bg-indigo-600 p-1 rounded-[2.5rem] transform lg:-translate-y-6 shadow-2xl">
                     <div class="bg-indigo-600 p-10 rounded-[2.4rem] h-full flex flex-col">
                         <div class="bg-indigo-500/50 text-white text-xs font-bold px-4 py-1.5 rounded-full inline-block mb-6 uppercase tracking-wider">الأكثر طلباً</div>
-                        <h4 class="text-white text-2xl font-bold mb-6">اشتراكات المنصات</h4>
+                        <h4 class="text-white text-2xl font-bold mb-6">اشتراكات VIP</h4>
                         
                         <div class="space-y-4 mb-10 flex-grow">
-                            <!-- Canva -->
-                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
-                                <div class="flex items-center gap-3">
-                                    <i data-lucide="palette" class="w-5 h-5"></i>
-                                    <span class="font-bold">Canva Pro</span>
-                                </div>
-                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">اشتراك سنوي</span>
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition">
+                                <div class="flex items-center gap-3"><i data-lucide="palette" class="w-5 h-5"></i> <span class="font-bold">Canva Pro</span></div>
+                                <span class="text-[10px] bg-cyan-400 text-indigo-900 px-2 py-1 rounded font-black">سنوي</span>
                             </div>
-                            <!-- ChatGPT -->
-                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
-                                <div class="flex items-center gap-3">
-                                    <i data-lucide="bot" class="w-5 h-5"></i>
-                                    <span class="font-bold">ChatGPT Plus</span>
-                                </div>
-                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">4.0 Turbo</span>
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition">
+                                <div class="flex items-center gap-3"><i data-lucide="bot" class="w-5 h-5"></i> <span class="font-bold">ChatGPT Plus</span></div>
+                                <span class="text-[10px] bg-cyan-400 text-indigo-900 px-2 py-1 rounded font-black">4.0 Turbo</span>
                             </div>
-                            <!-- Netflix -->
-                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
-                                <div class="flex items-center gap-3">
-                                    <i data-lucide="tv" class="w-5 h-5"></i>
-                                    <span class="font-bold">Netflix 4K</span>
-                                </div>
-                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">باقة التوفير</span>
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition">
+                                <div class="flex items-center gap-3"><i data-lucide="tv" class="w-5 h-5"></i> <span class="font-bold">Netflix 4K</span></div>
+                                <span class="text-[10px] bg-cyan-400 text-indigo-900 px-2 py-1 rounded font-black">VIP</span>
                             </div>
-                            <!-- YouTube Premium -->
-                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
-                                <div class="flex items-center gap-3">
-                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
-                                    <span class="font-bold">YouTube Premium</span>
-                                </div>
-                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">بدون إعلانات</span>
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition">
+                                <div class="flex items-center gap-3"><i data-lucide="play-circle" class="w-5 h-5"></i> <span class="font-bold">YouTube Premium</span></div>
+                                <span class="text-[10px] bg-cyan-400 text-indigo-900 px-2 py-1 rounded font-black">بدون إعلانات</span>
                             </div>
-                            <!-- Telegram -->
-                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition cursor-pointer">
-                                <div class="flex items-center gap-3">
-                                    <i data-lucide="send" class="w-5 h-5"></i>
-                                    <span class="font-bold">Telegram Premium</span>
-                                </div>
-                                <span class="text-xs bg-cyan-400 text-indigo-900 px-2 py-1 rounded-lg font-black">كامل المميزات</span>
+                            <div class="flex items-center justify-between p-3 rounded-2xl bg-white/10 hover:bg-white/20 transition">
+                                <div class="flex items-center gap-3"><i data-lucide="send" class="w-5 h-5"></i> <span class="font-bold">Telegram Premium</span></div>
+                                <span class="text-[10px] bg-cyan-400 text-indigo-900 px-2 py-1 rounded font-black">كامل</span>
                             </div>
                         </div>
 
-                        <button class="w-full py-4 rounded-2xl bg-white text-indigo-600 font-bold hover:bg-slate-100 transition shadow-xl flex items-center justify-center gap-2">
-                            اطلب اشتراكك الآن <i data-lucide="arrow-left" class="w-5 h-5"></i>
-                        </button>
+                        <a href="https://wa.me/212698984642?text=أريد%20طلب%20اشتراك%20من%20المنصات" class="w-full py-4 rounded-2xl bg-white text-indigo-600 font-bold hover:bg-slate-100 transition shadow-xl flex items-center justify-center gap-2">
+                            اطلب الآن عبر واتساب <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Enterprise / Custom -->
+                <!-- Custom Projects -->
                 <div class="bg-slate-800/50 backdrop-blur-sm p-10 rounded-[2.5rem] border border-slate-700 flex flex-col">
-                    <h4 class="text-cyan-400 font-bold mb-4 uppercase tracking-widest text-sm">المؤسسات والبرمجيات</h4>
-                    <div class="text-2xl font-bold mb-8 leading-tight">حلول برمجية مخصصة</div>
+                    <h4 class="text-cyan-400 font-bold mb-4 uppercase tracking-widest text-sm">حلول مخصصة</h4>
+                    <div class="text-2xl font-bold mb-8 leading-tight">تطبيقات وبرامج</div>
                     <ul class="space-y-5 mb-12 flex-grow">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> تطبيقات iOS و Android</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> ربط بوابات الدفع</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> دعم فني مخصص للمؤسسات</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> تطبيقات هواتف ذكية</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> ربط أنظمة الدفع</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i> استشارات تقنية</li>
                     </ul>
-                    <button class="w-full py-4 rounded-2xl border-2 border-slate-700 hover:bg-slate-700 transition font-bold">استشارة تقنية</button>
+                    <a href="https://wa.me/212698984642?text=أريد%20استشارة%20برمجية%20لمشروعي" class="w-full py-4 rounded-2xl border-2 border-slate-700 hover:bg-slate-700 transition font-bold text-center">تحدث مع الخبير</a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form -->
-    <section id="contact" class="py-32 px-4 bg-slate-50">
-        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div class="text-right">
-                <h2 class="text-4xl font-bold mb-6">هل لديك استفسار عن اشتراك أو خدمة؟</h2>
-                <p class="text-lg text-slate-600 mb-10 leading-relaxed">
-                    فريق <span class="font-poppins font-bold text-indigo-600">Bi-service</span> جاهز لخدمتكم وتوفير الطلبات الخاصة. تواصل معنا مباشرة عبر القنوات المتاحة.
-                </p>
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4 flex-row-reverse">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-indigo-600"><i data-lucide="mail"></i></div>
-                        <div class="text-right">
-                            <div class="text-sm text-slate-500">البريد الإلكتروني</div>
-                            <div class="font-bold">sales@bi-service.com</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 flex-row-reverse">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-cyan-600"><i data-lucide="phone"></i></div>
-                        <div class="text-right">
-                            <div class="text-sm text-slate-500">واتساب المبيعات</div>
-                            <div class="font-bold font-poppins text-left" dir="ltr">+212698984642</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-indigo-100 border border-slate-100">
-                <form class="space-y-6" onsubmit="event.preventDefault(); showSuccess();">
-                    <div class="text-right">
-                        <label class="block text-sm font-bold text-slate-700 mb-2">الاسم</label>
-                        <input type="text" placeholder="أدخل اسمك" class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-600 outline-none text-right" required>
-                    </div>
-                    <div class="text-right">
-                        <label class="block text-sm font-bold text-slate-700 mb-2">نوع الطلب</label>
-                        <select class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-600 outline-none text-right text-slate-500">
-                            <option>شراء اشتراك (Netflix, YouTube...)</option>
-                            <option>طلب خدمة برمجة</option>
-                            <option>مشكلة فنية في اشتراك</option>
-                            <option>استفسار عام</option>
-                        </select>
-                    </div>
-                    <div class="text-right">
-                        <label class="block text-sm font-bold text-slate-700 mb-2">تفاصيل الطلب</label>
-                        <textarea rows="4" placeholder="اكتب هنا ما تحتاجه..." class="w-full px-6 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-600 outline-none text-right" required></textarea>
-                    </div>
-                    <button type="submit" class="w-full py-5 btn-grad text-white font-bold rounded-2xl text-lg transition-all">إرسال الطلب</button>
-                    <div id="success-msg" class="hidden text-center text-green-600 font-bold animate-pulse mt-4">
-                        تم استلام طلبك! سيقوم فريق المبيعات بالرد عليك قريباً.
-                    </div>
-                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 pt-20 pb-10 px-4">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row-reverse justify-between items-center gap-8 mb-16">
+    <footer class="bg-white border-t border-slate-200 pt-20 pb-10 px-4 text-center">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row-reverse justify-between items-center gap-8 mb-10">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center">
                     <svg viewBox="0 0 100 100" class="w-6 h-6 fill-none stroke-white stroke-[8]">
@@ -315,45 +239,28 @@
                 </div>
                 <span class="text-2xl font-bold font-poppins logo-gradient">Bi-service</span>
             </div>
-            
             <div class="flex gap-8 font-bold text-slate-500">
+                <a href="https://wa.me/212698984642" class="flex items-center gap-1 hover:text-green-600 transition"><i data-lucide="phone"></i> واتساب</a>
                 <a href="#" class="hover:text-indigo-600 transition">تويتر</a>
-                <a href="#" class="hover:text-indigo-600 transition">لينكد إن</a>
                 <a href="#" class="hover:text-indigo-600 transition">انستقرام</a>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto border-t border-slate-100 pt-8 text-center text-slate-400 text-sm">
-            &copy; 2024 Bi-service Solutions. متجرك الرقمي الأول بكل أمان.
-        </div>
+        <p class="text-slate-400 text-sm">&copy; 2024 Bi-service Solutions. جميع الحقوق محفوظة.</p>
     </footer>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Form success logic
-        function showSuccess() {
-            const msg = document.getElementById('success-msg');
-            msg.classList.remove('hidden');
-            setTimeout(() => { msg.classList.add('hidden'); }, 6000);
-        }
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-lg', 'py-1');
-            } else {
-                nav.classList.remove('shadow-lg', 'py-1');
-            }
+            if (window.scrollY > 50) nav.classList.add('shadow-lg', 'py-1');
+            else nav.classList.remove('shadow-lg', 'py-1');
         });
     </script>
 </body>
