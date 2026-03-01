@@ -1,6 +1,244 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bi-service Ad - Cinematic Version</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #050505;
+            overflow: hidden;
+            color: #fff;
+        }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .highlight-gradient {
+            background: linear-gradient(90deg, #6366f1, #06b6d4, #6366f1);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .floating-icon {
+            filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.4));
+        }
+
+        .blur-bg {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .progress-bar-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #6366f1, #06b6d4);
+        }
+
+        .sub-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar-container">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="blur-bg top-0 right-0" id="bg1"></div>
+    <div class="blur-bg bottom-0 left-0" id="bg2"></div>
+
+    <!-- Slide 1: Hook -->
+    <div class="slide" id="slide1">
+        <h3 class="text-indigo-400 font-bold tracking-[0.2em] mb-4 uppercase text-sm">مستقبلك الرقمي يبدأ هنا</h3>
+        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">هل تبحث عن <br><span class="highlight-gradient">الاحترافية والتوفير؟</span></h1>
+        <p class="text-slate-400 text-lg max-w-xl">Bi-service توفر لك كل ما تحتاجه من اشتراكات وخدمات برمجية في مكان واحد.</p>
+    </div>
+
+    <!-- Slide 2: Subscriptions focus -->
+    <div class="slide" id="slide2">
+        <h2 class="text-3xl md:text-5xl font-bold mb-12">أشهر الاشتراكات <span class="text-indigo-500">بأقل الأسعار</span></h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-5xl">
+            <!-- Items will be animated here -->
+            <div class="sub-pill p-6 rounded-3xl flex items-center gap-4" data-item>
+                <div class="w-12 h-12 bg-red-600/20 rounded-xl flex items-center justify-center text-red-600"><i data-lucide="tv"></i></div>
+                <div class="text-right">
+                    <div class="font-bold">Netflix 4K</div>
+                    <div class="text-xs text-slate-500">حسابات رسمية مضمونة</div>
+                </div>
+            </div>
+            <div class="sub-pill p-6 rounded-3xl flex items-center gap-4" data-item>
+                <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-500"><i data-lucide="send"></i></div>
+                <div class="text-right">
+                    <div class="font-bold">Telegram Premium</div>
+                    <div class="text-xs text-slate-500">تفعيل فوري</div>
+                </div>
+            </div>
+            <div class="sub-pill p-6 rounded-3xl flex items-center gap-4" data-item>
+                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center text-green-500"><i data-lucide="bot"></i></div>
+                <div class="text-right">
+                    <div class="font-bold">ChatGPT Plus</div>
+                    <div class="text-xs text-slate-500">قوة الذكاء الاصطناعي</div>
+                </div>
+            </div>
+            <div class="sub-pill p-6 rounded-3xl flex items-center gap-4" data-item>
+                <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center text-red-500"><i data-lucide="play-circle"></i></div>
+                <div class="text-right">
+                    <div class="font-bold">YouTube Premium</div>
+                    <div class="text-xs text-slate-500">وداعاً للإعلانات</div>
+                </div>
+            </div>
+            <div class="sub-pill p-6 rounded-3xl flex items-center gap-4" data-item>
+                <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-500"><i data-lucide="palette"></i></div>
+                <div class="text-right">
+                    <div class="font-bold">Canva Pro</div>
+                    <div class="text-xs text-slate-500">صمم كالمحترفين</div>
+                </div>
+            </div>
+            <div class="sub-pill p-6 rounded-3xl flex items-center gap-4 bg-indigo-600/10 border-indigo-500/30" data-item>
+                <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white"><i data-lucide="plus"></i></div>
+                <div class="text-right">
+                    <div class="font-bold">والمزيد...</div>
+                    <div class="text-xs text-slate-400">جميع المنصات متوفرة</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Web Dev focus -->
+    <div class="slide" id="slide3">
+        <div class="floating-icon mb-8">
+            <div class="w-24 h-24 bg-gradient-to-br from-indigo-600 to-cyan-500 rounded-[2rem] flex items-center justify-center shadow-2xl">
+                <i data-lucide="code-2" class="w-12 h-12 text-white"></i>
+            </div>
+        </div>
+        <h2 class="text-4xl md:text-6xl font-black mb-6">نصمم نجاحك البرمجي</h2>
+        <div class="flex flex-wrap justify-center gap-4 max-w-2xl text-lg font-bold">
+            <span class="bg-white/5 px-6 py-2 rounded-full border border-white/10">مواقع إلكترونية</span>
+            <span class="bg-white/5 px-6 py-2 rounded-full border border-white/10">تطبيقات جوال</span>
+            <span class="bg-white/5 px-6 py-2 rounded-full border border-white/10">متاجر رقمية</span>
+            <span class="bg-white/5 px-6 py-2 rounded-full border border-white/10">أنظمة مخصصة</span>
+        </div>
+    </div>
+
+    <!-- Slide 4: Final CTA -->
+    <div class="slide" id="slide4">
+        <div class="mb-10">
+            <div class="w-20 h-20 bg-white rounded-2xl mx-auto flex items-center justify-center shadow-xl">
+                 <svg viewBox="0 0 100 100" class="w-12 h-12 fill-none stroke-slate-900 stroke-[8]">
+                    <path d="M30 20 L30 80 Q60 80 60 50 Q60 20 30 20 Z" />
+                </svg>
+            </div>
+            <h4 class="mt-4 font-poppins text-2xl font-bold tracking-tight">Bi-service</h4>
+        </div>
+        <h2 class="text-4xl md:text-6xl font-black mb-12 leading-tight">لا تضيع وقتك.. <br>اطلب خدمتك الآن</h2>
+        
+        <div class="flex flex-col items-center gap-6">
+            <a href="https://wa.me/966500000000" class="group relative px-10 py-5 bg-[#25d366] text-white rounded-[2rem] font-black text-xl flex items-center gap-3 transition-transform hover:scale-110 shadow-2xl shadow-green-500/20">
+                <i data-lucide="message-circle" class="w-6 h-6 fill-current"></i>
+                تواصل معنا عبر واتساب
+            </a>
+            <p class="text-slate-500 text-sm">خدمة سريعة | ضمان ذهبي | أسعار منافسة</p>
+        </div>
+
+        <button onclick="playAd()" class="mt-16 text-xs text-slate-600 flex items-center gap-2 hover:text-white transition">
+            <i data-lucide="refresh-cw" class="w-3 h-3"></i> إعادة العرض
+        </button>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const slides = ['#slide1', '#slide2', '#slide3', '#slide4'];
+        let tl = gsap.timeline();
+
+        function playAd() {
+            tl.kill(); // Stop any current animation
+            tl = gsap.timeline();
+            
+            // Reset slides
+            gsap.set(".slide", { opacity: 0, visibility: "hidden", y: 20 });
+            gsap.set(".sub-pill", { opacity: 0, x: 30 });
+            gsap.set("#progressFill", { width: "0%" });
+
+            // Scene 1: Intro
+            tl.to("#slide1", { opacity: 1, visibility: "visible", y: 0, duration: 1, ease: "power4.out" })
+              .to("#slide1", { opacity: 0, y: -20, duration: 0.8, delay: 2.5 });
+
+            // Scene 2: Subscriptions
+            tl.to("#slide2", { opacity: 1, visibility: "visible", y: 0, duration: 1 })
+              .to("[data-item]", { opacity: 1, x: 0, stagger: 0.1, duration: 0.8, ease: "back.out(1.2)" }, "-=0.5")
+              .to("#slide2", { opacity: 0, scale: 0.95, duration: 0.8, delay: 3.5 });
+
+            // Scene 3: Programming
+            tl.to("#slide3", { opacity: 1, visibility: "visible", y: 0, duration: 1 })
+              .from("#slide3 .floating-icon", { rotationY: 180, duration: 1.5, ease: "elastic.out(1, 0.3)" }, "-=0.5")
+              .from("#slide3 span", { opacity: 0, y: 20, stagger: 0.1, duration: 0.5 }, "-=1")
+              .to("#slide3", { opacity: 0, x: -50, duration: 0.8, delay: 3 });
+
+            // Scene 4: Outro
+            tl.to("#slide4", { opacity: 1, visibility: "visible", y: 0, duration: 1 })
+              .from("#slide4 a", { scale: 0.5, opacity: 0, duration: 1, ease: "elastic.out(1, 0.5)" }, "-=0.5");
+
+            // Sync progress bar
+            gsap.to("#progressFill", {
+                width: "100%",
+                duration: tl.totalDuration(),
+                ease: "none"
+            });
+        }
+
+        // Background movement
+        gsap.to("#bg1", { x: 50, y: 30, duration: 10, repeat: -1, yoyo: true, ease: "sine.inOut" });
+        gsap.to("#bg2", { x: -30, y: -50, duration: 12, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+        window.onload = playAd;
+    </script>
+</body>
+</html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bi-service | متجر الاشتراكات والحلول الرقمية</title>
